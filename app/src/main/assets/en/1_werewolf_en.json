@@ -1,0 +1,56 @@
+{
+  "roleList": [
+    {
+      "name": "Werewolf",
+      "imagePath": "wolf",
+      "defNumber": 3,
+      "number": 3
+    },
+    {
+      "name": "Villager",
+      "imagePath": "villager",
+      "defNumber": 5,
+      "number": 5
+    },
+    {
+      "name": "Witch",
+      "imagePath": "witch",
+      "defNumber": 1,
+      "number": 1
+    },
+    {
+      "name": "Seer",
+      "imagePath": "seer",
+      "defNumber": 1,
+      "number": 1
+    },
+    {
+      "name": "Hunter",
+      "imagePath": "hunter",
+      "defNumber": 1,
+      "number": 1
+    },
+    {
+      "name": "Guard",
+      "imagePath": "guard",
+      "defNumber": 1,
+      "number": 1
+    },
+    {
+      "name": "Werewolf King",
+      "imagePath": "wolf_king",
+      "defNumber": 1,
+      "number": 1
+    },
+    {
+      "name": "Idiot",
+      "imagePath": "idiot",
+      "defNumber": 0,
+      "number": 0
+    }
+  ],
+  "roleText": [],
+  "roomName": "Werewolf",
+  "roomImagePath": "wolf",
+  "formatText": "Player %d, you are %s."
+}

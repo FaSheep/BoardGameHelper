@@ -1,0 +1,43 @@
+pluginManagement {
+    repositories {
+        mavenLocal()
+        maven {
+            name 'ali_plugin'
+            url 'https://maven.aliyun.com/repository/gradle-plugin'
+        }
+        maven {
+            name 'public'
+            url 'https://maven.aliyun.com/repository/public'
+        }
+        maven {
+            name 'ali_google'
+            url 'https://maven.aliyun.com/repository/google'
+        }
+        gradlePluginPortal()
+        mavenCentral()
+        google()
+    }
+}
+dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+    repositories {
+        mavenLocal()
+        maven {
+            name 'public'
+            url 'https://maven.aliyun.com/repository/public'
+        }
+        maven {
+            name 'ali_google'
+            url 'https://maven.aliyun.com/repository/google'
+        }
+        mavenCentral()
+        google()
+    }
+}
+
+rootProject.name = "Board Game Helper"
+include ':core'
+include ':android'
+include ':app'
+include ':web'
+

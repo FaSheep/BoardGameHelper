@@ -1,0 +1,56 @@
+{
+  "roleList": [
+    {
+      "name": "梅林",
+      "imagePath": "defRoleImage",
+      "defNumber": 1,
+      "number": 1
+    },
+    {
+      "name": "派西维尔",
+      "imagePath": "defRoleImage",
+      "defNumber": 1,
+      "number": 1
+    },
+    {
+      "name": "爪牙",
+      "imagePath": "defRoleImage",
+      "defNumber": 1,
+      "number": 1
+    },
+    {
+      "name": "莫甘娜",
+      "imagePath": "defRoleImage",
+      "defNumber": 1,
+      "number": 1
+    },
+    {
+      "name": "莫德雷德",
+      "imagePath": "defRoleImage",
+      "defNumber": 1,
+      "number": 1
+    },
+    {
+      "name": "刺客",
+      "imagePath": "defRoleImage",
+      "defNumber": 1,
+      "number": 1
+    },
+    {
+      "name": "奥伯伦",
+      "imagePath": "defRoleImage",
+      "defNumber": 1,
+      "number": 1
+    },
+    {
+      "name": "忠臣",
+      "imagePath": "defRoleImage",
+      "defNumber": 2,
+      "number": 2
+    }
+  ],
+  "roleText": [],
+  "roomName": "阿瓦隆",
+  "roomImagePath": "avalon",
+  "formatText": "玩家%d，你是%s。"
+}

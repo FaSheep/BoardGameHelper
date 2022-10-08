@@ -1,0 +1,56 @@
+{
+  "roleList": [
+    {
+      "name": "狼人",
+      "imagePath": "wolf",
+      "defNumber": 3,
+      "number": 3
+    },
+    {
+      "name": "村民",
+      "imagePath": "villager",
+      "defNumber": 5,
+      "number": 5
+    },
+    {
+      "name": "女巫",
+      "imagePath": "witch",
+      "defNumber": 1,
+      "number": 1
+    },
+    {
+      "name": "预言家",
+      "imagePath": "seer",
+      "defNumber": 1,
+      "number": 1
+    },
+    {
+      "name": "猎人",
+      "imagePath": "hunter",
+      "defNumber": 1,
+      "number": 1
+    },
+    {
+      "name": "守卫",
+      "imagePath": "guard",
+      "defNumber": 1,
+      "number": 1
+    },
+    {
+      "name": "狼王",
+      "imagePath": "wolf_king",
+      "defNumber": 1,
+      "number": 1
+    },
+    {
+      "name": "白痴",
+      "imagePath": "idiot",
+      "defNumber": 0,
+      "number": 0
+    }
+  ],
+  "roleText": [],
+  "roomName": "狼人杀",
+  "roomImagePath": "wolf",
+  "formatText": "玩家%d，你是%s。"
+}

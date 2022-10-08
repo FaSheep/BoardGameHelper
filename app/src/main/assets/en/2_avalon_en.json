@@ -1,0 +1,56 @@
+{
+  "roleList": [
+    {
+      "name": "Merlin",
+      "imagePath": "defRoleImage",
+      "defNumber": 1,
+      "number": 1
+    },
+    {
+      "name": "Percival",
+      "imagePath": "defRoleImage",
+      "defNumber": 1,
+      "number": 1
+    },
+    {
+      "name": "Minion",
+      "imagePath": "defRoleImage",
+      "defNumber": 1,
+      "number": 1
+    },
+    {
+      "name": "Morgana",
+      "imagePath": "defRoleImage",
+      "defNumber": 1,
+      "number": 1
+    },
+    {
+      "name": "Mordred",
+      "imagePath": "defRoleImage",
+      "defNumber": 1,
+      "number": 1
+    },
+    {
+      "name": "Assassin",
+      "imagePath": "defRoleImage",
+      "defNumber": 1,
+      "number": 1
+    },
+    {
+      "name": "Oberon",
+      "imagePath": "defRoleImage",
+      "defNumber": 1,
+      "number": 1
+    },
+    {
+      "name": "Servant",
+      "imagePath": "defRoleImage",
+      "defNumber": 2,
+      "number": 2
+    }
+  ],
+  "roleText": [],
+  "roomName": "Avalon",
+  "roomImagePath": "avalon",
+  "formatText": "Player %d, you are %s."
+}

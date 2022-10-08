@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">桌游助手</string>
+    <string name="submit_button">生成二维码</string>
+    <string name="next">下一个</string>
+    <string name="previous">上一个</string>
+    <string name="werewolf">狼人</string>
+    <string name="villager">村民</string>
+    <string name="witch">女巫</string>
+    <string name="seer">预言家</string>
+    <string name="hunter">猎人</string>
+    <string name="guard">守卫</string>
+    <string name="werewolf_king">狼王</string>
+    <string name="idiot">白痴</string>
+    <string name="merlin">梅林</string>
+    <string name="assassin">刺客</string>
+    <string name="percival">派西维尔</string>
+    <string name="morgana">莫甘娜</string>
+    <string name="oberon">奥伯伦</string>
+    <string name="servant">忠臣</string>
+    <string name="minion">爪牙</string>
+    <string name="room_werewolf">狼人杀</string>
+    <string name="room_avalon">阿瓦隆</string>
+    <string name="custom">自定义</string>
+    <string name="tips_text">长按以删除角色</string>
+    <string name="toast_text">没有人你也玩？</string>
+    <string name="err_text1">发生错误</string>
+    <string name="default_format_text">玩家%d，你是%s。</string>
+    <string name="tips_text2">玩家%d\n长按二维码查看角色</string>
+    <string name="dialog_result_text">玩家%d</string>
+    <string name="confirm">确认</string>
+    <string name="cancel">取消</string>
+    <string name="delete_text">删除角色？</string>
+    <string name="add_role_text">添加自定义角色</string>
+    <string name="mordred">莫德雷德</string>
+</resources>
