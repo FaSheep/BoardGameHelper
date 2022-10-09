@@ -24,36 +24,14 @@ public class QRCodeActivity extends AppCompatActivity {
     private final List<Bitmap> bitmapList = new ArrayList<>();
     private List<String> secretTextList = new ArrayList<>();
     private int playerNum;
-    private String id;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_qrcode);
 
-        id = getIntent().getStringExtra("id");
-//        careerList = (List<Career>) getIntent().getSerializableExtra("careerList");
-//        Room room = (Room) getIntent().getSerializableExtra("room");
+        String id = getIntent().getStringExtra("id");
         playerNum = 0;
-//        int n = 1;
-//        for (Career c : careerList) {
-//            for (int i = 0; i < c.getNum(); i++) {
-////                System.out.println(c.getCareer());
-//                System.out.printf("player%d, you are %s\n", n++, c.getCareer());
-//            }
-//        }
-//        try {
-////            initBitmap();
-//        } catch (WriterException e) {
-//            e.printStackTrace();
-//            Toast.makeText(QRCodeActivity.this, "???", Toast.LENGTH_LONG).show();
-////            finish();
-//            return;
-//        } catch (IndexOutOfBoundsException e) {
-//            Toast.makeText(QRCodeActivity.this, "玩家数为0", Toast.LENGTH_LONG).show();
-////            finish();
-//            return;
-//        }
         RoomManager.getRoom(id).rearrange();
         secretTextList = RoomManager.getRoom(id).getTargetText();
         try {
@@ -93,29 +71,4 @@ public class QRCodeActivity extends AppCompatActivity {
             return true;
         });
     }
-
-//    private void initBitmap() throws WriterException {
-//        Encoder encoder = new Encoder(EncoderType.GBK);
-////        Encoder encoder = new Encoder();
-//        String output = "玩家%d，你是%s。";
-//        List<String> careers = new ArrayList<>();
-//        for (Role role : careerList) {
-//            for (int i = 0; i < role.getNum(); i++) {
-//                careers.add(role.getCareer());
-//            }
-//        }
-//        if (careers.size() == 0) {
-//            System.out.println("玩家数为0");
-//            throw new IndexOutOfBoundsException();
-//        }
-//        Random random = new Random();
-//        int n = random.nextInt(20);
-//        for (int i = 0; i <= n; i++) {
-//            Collections.shuffle(careers);
-//        }
-//        int num = 1;
-//        for (String str : careers) {
-//            bitmapList.add(encoder.getBitmap(String.format(output, num++, str)));
-//        }
-//    }
 }

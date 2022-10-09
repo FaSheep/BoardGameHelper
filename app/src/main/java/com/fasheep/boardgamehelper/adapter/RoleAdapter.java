@@ -4,10 +4,7 @@ import android.app.AlertDialog;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.ImageView;
-import android.widget.TextView;
+import android.widget.*;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -17,6 +14,8 @@ import com.fasheep.boardgamehelper.R;
 import com.fasheep.boardgamehelper.ResourceID;
 import com.fasheep.boardgamehelper.core.Role;
 import com.fasheep.boardgamehelper.core.RoomManager;
+
+import java.util.regex.Pattern;
 
 public class RoleAdapter extends RecyclerView.Adapter {
     private static final int ITEM_TYPE_ROLE = 0;
@@ -84,7 +83,6 @@ public class RoleAdapter extends RecyclerView.Adapter {
             roleViewHolder.itemView.setOnLongClickListener(view -> {
                 AlertDialog.Builder removeRoleDialog = new AlertDialog.Builder(roleViewHolder.itemView.getContext());
                 removeRoleDialog.setTitle(view.getContext().getString(R.string.delete_text));
-//                removeRoleDialog.setMessage("删除");
                 removeRoleDialog.setPositiveButton(view.getContext().getText(R.string.confirm), (dialogInterface, i) -> {
                     RoomManager.getRoom(id).removeRole(position);
                     notifyItemRemoved(position);
@@ -97,13 +95,17 @@ public class RoleAdapter extends RecyclerView.Adapter {
             });
         } else if (holder instanceof AddViewHolder) {
             AddViewHolder addViewHolder = (AddViewHolder) holder;
-//            addViewHolder.addImage.setImageResource(R.drawable.ic_baseline_add);
             addViewHolder.itemView.setOnClickListener(view -> {
                 EditText roleName = new EditText(addViewHolder.itemView.getContext());
                 AlertDialog.Builder inputDialog = new AlertDialog.Builder(addViewHolder.itemView.getContext());
                 inputDialog.setTitle(view.getContext().getString(R.string.add_role_text));
                 inputDialog.setView(roleName);
                 inputDialog.setPositiveButton(view.getContext().getText(R.string.confirm), (dialogInterface, i) -> {
+                    String name = roleName.getText().toString();
+                    if (Pattern.compile("[;,=\"\\[\\]()/@:<>{}\n\r\t']").matcher(name).find()) {
+                        Toast.makeText(view.getContext(), R.string.invalid_name, Toast.LENGTH_SHORT).show();
+                        return;
+                    }
                     RoomManager.getRoom(id).addRole(roleName.getText().toString(), 0, "defRoleImage");
                     notifyItemInserted(getItemCount());
                 });
@@ -129,7 +131,6 @@ public class RoleAdapter extends RecyclerView.Adapter {
             holder.roleNum.setText(String.valueOf(num));
         }
     }
-
 
     @Override
     public int getItemViewType(int position) {

@@ -20,13 +20,6 @@ public class ResourceID {
 
         map.put("avalon", R.drawable.avalon);
         map.put("custom", R.drawable.cunstom);
-//        IDMap.put("hunter",R.drawable.hunter);
-//        IDMap.put("seer",R.drawable.seer);
-//        IDMap.put("witch",R.drawable.witch);
-//        IDMap.put("guard",R.drawable.guard);
-//        IDMap.put("idiot",R.drawable.idiot);
-//        IDMap.put("villager",R.drawable.villager);
-//        IDMap.put("wolf_king",R.drawable.wolf_king);
     }
 
     public static int getID(String id) {
@@ -36,6 +29,4 @@ public class ResourceID {
             return R.drawable.ic_role_image;
         }
     }
-
-    ;
 }

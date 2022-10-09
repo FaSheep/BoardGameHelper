@@ -30,8 +30,6 @@ public class OnlineQRCodeActivity extends AppCompatActivity {
         String id = getIntent().getStringExtra("id");
         time = String.valueOf(System.currentTimeMillis());
 
-//        StringBuilder stringBuilder = new StringBuilder();
-
         connectThread = new Thread(() -> {
             int code = 0;
             try {
@@ -60,22 +58,18 @@ public class OnlineQRCodeActivity extends AppCompatActivity {
                     }
                     reader.close();
                 }
-
                 connection.disconnect();
-//                System.out.
-//                System.out.println("\n\n\n\n\n\n\n\n\n\n" + stringBuilder + "\n\n\n\n\n\n\n\n\n");
-//                done = "success".equals(stringBuilder.toString());
             } catch (IOException e) {
                 e.printStackTrace();
             }
             if (code == 0) {
                 runOnUiThread(() -> {
-                    Toast.makeText(this, "连接失败", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this, R.string.code_0, Toast.LENGTH_SHORT).show();
                     finish();
                 });
             } else if (code >= 500) {
                 runOnUiThread(() -> {
-                    Toast.makeText(this, "初始化失败", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this, R.string.code_500, Toast.LENGTH_SHORT).show();
                     finish();
                 });
             } else if (code == 200) {
@@ -92,36 +86,21 @@ public class OnlineQRCodeActivity extends AppCompatActivity {
         });
         connectThread.start();
 
-
         qrCode = findViewById(R.id.onlineQRCode);
-//        qrCode.setOnLongClickListener();
-//        qrCode.setImageBitmap();
     }
 
     @Override
     public void onBackPressed() {
         if (connectThread.isAlive()) {
-            Toast.makeText(this, "正在连接，请勿退出", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, R.string.keep_connect, Toast.LENGTH_SHORT).show();
         } else {
             super.onBackPressed();
         }
-//
-    }
-
-    @Override
-    protected void onDestroy() {
-//        while (connectThread.isAlive()){
-//
-//            Toast.makeText(this, "closing", Toast.LENGTH_SHORT).show();
-//        }
-
-        super.onDestroy();
     }
 
     private Bitmap getBitmap() {
         Bitmap bitmap;
         try {
-//            URL + time;
             System.out.println(URL + time);
             Encoder encoder = new Encoder(EncoderType.UTF8);
             MatrixToBitmapConvertor convertor = new MatrixToBitmapConvertor();

@@ -32,4 +32,8 @@
     <string name="delete_text">Delete the role?</string>
     <string name="add_role_text">Add a custom role</string>
     <string name="mordred">Mordred</string>
+    <string name="invalid_name">Invalid name</string>
+    <string name="code_0">Connect failed</string>
+    <string name="code_500">Initialization failed</string>
+    <string name="keep_connect">Connecting......</string>
 </resources>

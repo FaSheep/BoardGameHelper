@@ -33,4 +33,8 @@
     <string name="delete_text">删除角色？</string>
     <string name="add_role_text">添加自定义角色</string>
     <string name="mordred">莫德雷德</string>
+    <string name="invalid_name">无效名称</string>
+    <string name="code_0">连接失败</string>
+    <string name="code_500">初始化失败</string>
+    <string name="keep_connect">正在连接.....</string>
 </resources>
