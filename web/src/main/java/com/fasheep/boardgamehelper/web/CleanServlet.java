@@ -1,27 +1,26 @@
 package com.fasheep.boardgamehelper.web;
 
 import com.fasheep.boardgamehelper.core.RoomManager;
-import jakarta.servlet.*;
-import jakarta.servlet.http.*;
-import jakarta.servlet.annotation.*;
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.Cookie;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 
-import java.io.IOException;
-
-@WebServlet(name = "CleanServlet", value = "/CleanServlet")
+@WebServlet(name = "CleanServlet", value = "/clean.do")
 public class CleanServlet extends HttpServlet {
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) {
         Cookie[] cookie = request.getCookies();
         if (cookie != null) {
             if (cookie[0].getName().equals("fasheep") && cookie[0].getValue().equals("fashionlyy")) {
                 RoomManager.clean();
             }
-//            cookie[0].getValue();
         }
     }
 
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) {
         Cookie[] cookie = request.getCookies();
         if (cookie != null) {
             if (cookie[0].getName().equals("fasheep") && cookie[0].getValue().equals("fashionlyy")) {
