@@ -9,6 +9,6 @@
 .externalNativeBuild
 .cxx
 local.properties
-
-# Project exclude paths
-**/build
+/**/src/
+!/**/src/main
+/**/build

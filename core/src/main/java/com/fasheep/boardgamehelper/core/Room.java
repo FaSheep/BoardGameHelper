@@ -83,10 +83,6 @@ public class Room implements Serializable {
         return roleText.get(playerIndex < roleText.size() - 1 ? playerIndex++ : playerIndex);
     }
 
-    public String getText() {
-        return getTargetText().get(playerIndex);
-    }
-
     public void reloadIndex() {
         playerIndex = 0;
     }

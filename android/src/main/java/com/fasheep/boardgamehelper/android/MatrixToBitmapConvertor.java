@@ -8,7 +8,6 @@ public class MatrixToBitmapConvertor {
     public Bitmap convert(BitMatrix matrix) {
         int width = matrix.getWidth();
         int height = matrix.getHeight();
-        System.out.println(width + " " + height);
         int[] pixels = new int[width * height];
         for (int y = 0; y < height; y++) {
             int offset = y * width;
@@ -16,7 +15,7 @@ public class MatrixToBitmapConvertor {
                 pixels[offset + x] = matrix.get(x, y) ? Color.BLACK : Color.WHITE;
             }
         }
-        Bitmap bitmap = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888);// 可能会太占内存
+        Bitmap bitmap = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888);
         bitmap.setPixels(pixels, 0, 300, 0, 0, width, height);
         return bitmap;
     }
