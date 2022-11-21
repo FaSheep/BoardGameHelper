@@ -11,20 +11,21 @@ import jakarta.servlet.http.HttpServletResponse;
 public class CleanServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) {
-        Cookie[] cookie = request.getCookies();
-        if (cookie != null) {
-            if (cookie[0].getName().equals("fasheep") && cookie[0].getValue().equals("fashionlyy")) {
-                RoomManager.clean();
-            }
-        }
+        doAll(request);
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) {
+        doAll(request);
+    }
+
+    private static void doAll(HttpServletRequest request) {
         Cookie[] cookie = request.getCookies();
         if (cookie != null) {
-            if (cookie[0].getName().equals("fasheep") && cookie[0].getValue().equals("fashionlyy")) {
-                RoomManager.clean();
+            for (Cookie c : cookie) {
+                if (c.getName().equals("admin") && c.getValue().equals("admin")) {
+                    RoomManager.clean();
+                }
             }
         }
     }

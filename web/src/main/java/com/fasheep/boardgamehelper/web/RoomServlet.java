@@ -3,6 +3,7 @@ package com.fasheep.boardgamehelper.web;
 import com.fasheep.boardgamehelper.core.Room;
 import com.fasheep.boardgamehelper.core.RoomManager;
 import com.google.gson.JsonSyntaxException;
+import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
@@ -16,16 +17,9 @@ public class RoomServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
         response.setCharacterEncoding("UTF-8");
+        response.setContentType("text/json");
+        response.addHeader("Access-Control-Allow-Origin", "*");
         PrintWriter writer = response.getWriter();
-
-        String id = request.getHeader("date");
-        if (id == null || "".equals(id)) {
-            response.setStatus(500);
-            writer.print("invalid id");
-            writer.flush();
-            writer.close();
-            return;
-        }
 
         InputStream is = request.getInputStream();
         InputStreamReader inputStreamReader = new InputStreamReader(is, StandardCharsets.UTF_8);
@@ -49,14 +43,45 @@ public class RoomServlet extends HttpServlet {
             response.setStatus(500);
             writer.flush();
             writer.close();
+        } else if (room.getNumOfPlayers() <= 0) {
+            writer.print("no player in this game");
+            response.setStatus(500);
+            writer.flush();
+            writer.close();
         } else {
-            writer.print("success");
+            String id;
+            synchronized ("lock") {
+                id = String.valueOf(System.currentTimeMillis());
+            }
+            writer.print(id);
             writer.flush();
             writer.close();
             response.setStatus(200);
             room.rearrange();
             RoomManager.addRoom(id, room);
-            System.out.printf("success:%s", id);
+            System.out.printf("success:%s\n", id);
         }
+
+    }
+
+    @Override
+    protected void doOptions(HttpServletRequest req, HttpServletResponse response) {
+//        super.doOptions(req, response);
+        response.addHeader("Access-Control-Allow-Headers", "*");
+
+        response.addHeader("Access-Control-Allow-Methods", "*");
+        response.addHeader("Access-Control-Allow-Origin", "*");
+//        response.addHeader("Access-Control-Allow-Credentials", "true");
+//        response.addHeader("Access-Control-Expose-Headers", "Authorization");
+
+/*        access-control-allow-headers:
+
+        access-control-allow-methods:
+
+        access-control-allow-origin: *
+
+        access-control-expose-headers: Authorization*/
+
+//        response.
     }
 }

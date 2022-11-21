@@ -16,12 +16,13 @@ import com.google.zxing.WriterException;
 import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.Locale;
 
 public class OnlineQRCodeActivity extends AppCompatActivity {
     private Thread connectThread;
     private ImageView qrCode;
     private String time = null;
-    private final String URL = "http://120.78.126.136:8080/web/display.do?id=";
+    private String URL;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,17 +31,24 @@ public class OnlineQRCodeActivity extends AppCompatActivity {
         String id = getIntent().getStringExtra("id");
         time = String.valueOf(System.currentTimeMillis());
 
+        Locale locale = getResources().getConfiguration().locale;
+        String language = locale.getLanguage();
+        if ("zh".equals(language)) {
+            URL = Resource.URL_CN;
+        } else if ("en".equals(language)) {
+            URL = Resource.URL_UK;
+        }
         connectThread = new Thread(() -> {
             int code = 0;
             try {
-                URL url = new URL(getIntent().getStringExtra("url"));
+                URL url = new URL(URL + "/web/add.do");
                 HttpURLConnection connection = (HttpURLConnection) url.openConnection();
                 connection.setRequestMethod("POST");
-                connection.setConnectTimeout(5000);
+                connection.setConnectTimeout(3000);
+                connection.setReadTimeout(1000);
                 connection.setDoInput(true);
                 connection.setDoOutput(true);
                 connection.setUseCaches(false);
-                connection.setRequestProperty("date", time);
                 connection.connect();
 
                 DataOutputStream os = new DataOutputStream(connection.getOutputStream());
@@ -51,11 +59,12 @@ public class OnlineQRCodeActivity extends AppCompatActivity {
 
                 if ((code = connection.getResponseCode()) == 200) {
                     BufferedReader reader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
-                    StringBuilder stringBuilder = new StringBuilder();
+                    time = reader.readLine();
+                    /*StringBuilder stringBuilder = new StringBuilder();
                     String temp;
                     while ((temp = reader.readLine()) != null) {
                         stringBuilder.append(temp);
-                    }
+                    }*/
                     reader.close();
                 }
                 connection.disconnect();
@@ -76,7 +85,7 @@ public class OnlineQRCodeActivity extends AppCompatActivity {
                 runOnUiThread(() -> {
                     qrCode.setImageBitmap(getBitmap());
                     qrCode.setOnLongClickListener(v -> {
-                        Uri uri = Uri.parse(URL + time);
+                        Uri uri = Uri.parse(URL + "/web/display.do?id=" + time);
                         Intent intent = new Intent(Intent.ACTION_VIEW, uri);
                         startActivity(intent);
                         return true;
@@ -104,7 +113,7 @@ public class OnlineQRCodeActivity extends AppCompatActivity {
             System.out.println(URL + time);
             Encoder encoder = new Encoder(EncoderType.UTF8);
             MatrixToBitmapConvertor convertor = new MatrixToBitmapConvertor();
-            bitmap = convertor.convert(encoder.getMatrix(URL + time));
+            bitmap = convertor.convert(encoder.getMatrix(URL + "/web/display.do?id=" + time));
         } catch (WriterException e) {
             throw new RuntimeException(e);
         }

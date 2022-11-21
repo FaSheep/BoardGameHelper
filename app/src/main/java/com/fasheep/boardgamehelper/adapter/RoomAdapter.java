@@ -8,7 +8,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import com.fasheep.boardgamehelper.R;
-import com.fasheep.boardgamehelper.ResourceID;
+import com.fasheep.boardgamehelper.Resource;
 import com.fasheep.boardgamehelper.core.RoomManager;
 
 public class RoomAdapter extends RecyclerView.Adapter<RoomAdapter.RoomViewHolder> {
@@ -39,7 +39,7 @@ public class RoomAdapter extends RecyclerView.Adapter<RoomAdapter.RoomViewHolder
                 onItemClickListener.onItemClick(  view, position);
             });
         }
-        holder.roomImage.setImageResource(ResourceID.getID(RoomManager.getRoom(String.valueOf(position)).getRoomImagePath()));
+        holder.roomImage.setImageResource(Resource.getID(RoomManager.getRoom(String.valueOf(position)).getRoomImagePath()));
         holder.roomName.setText(RoomManager.getRoom(String.valueOf(position)).getRoomName());
     }
 

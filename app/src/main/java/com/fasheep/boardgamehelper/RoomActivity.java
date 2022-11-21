@@ -44,7 +44,6 @@ public class RoomActivity extends AppCompatActivity {
             if (RoomManager.getRoom(id).getNumOfPlayers() > 0) {
                 if (online.isChecked()){
                     Intent intent = new Intent(RoomActivity.this, OnlineQRCodeActivity.class);
-                    intent.putExtra("url","http://120.78.126.136:8080/web/add.do");
                     intent.putExtra("id", id);
                     startActivity(intent);
                 }else {

@@ -11,7 +11,7 @@ import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.fasheep.boardgamehelper.R;
-import com.fasheep.boardgamehelper.ResourceID;
+import com.fasheep.boardgamehelper.Resource;
 import com.fasheep.boardgamehelper.core.Role;
 import com.fasheep.boardgamehelper.core.RoomManager;
 
@@ -72,7 +72,7 @@ public class RoleAdapter extends RecyclerView.Adapter {
             roleViewHolder.roleName.setText(role.getName());
             roleViewHolder.roleNum.setText(String.valueOf(role.getNumber()));
             roleViewHolder.roleNum.setHint(String.valueOf(role.getDefNumber()));
-            roleViewHolder.roleImage.setImageResource(ResourceID.getID(RoomManager.getRoom(id).getRole(position).getImagePath()));
+            roleViewHolder.roleImage.setImageResource(Resource.getID(RoomManager.getRoom(id).getRole(position).getImagePath()));
             roleViewHolder.numMinus.setOnClickListener(view -> editNum(roleViewHolder, -1, position, false));
             roleViewHolder.numAdd.setOnClickListener(view -> editNum(roleViewHolder, 1, position, false));
             roleViewHolder.roleNum.setOnFocusChangeListener((view, b) -> {
@@ -106,7 +106,7 @@ public class RoleAdapter extends RecyclerView.Adapter {
                         Toast.makeText(view.getContext(), R.string.invalid_name, Toast.LENGTH_SHORT).show();
                         return;
                     }
-                    RoomManager.getRoom(id).addRole(roleName.getText().toString(), 0, "defRoleImage");
+                    RoomManager.getRoom(id).addRole(roleName.getText().toString(), 1, "defRoleImage");
                     notifyItemInserted(getItemCount());
                 });
                 inputDialog.setNegativeButton(view.getContext().getText(R.string.cancel), (dialogInterface, i) -> {

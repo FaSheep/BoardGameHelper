@@ -9,6 +9,8 @@
 .externalNativeBuild
 .cxx
 local.properties
-/**/src/
-!/**/src/main
+#/**/src/
+#!/**/src/main/
+/**/src/*test
+/**/src/*Test
 /**/build
