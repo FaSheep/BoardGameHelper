@@ -51,7 +51,7 @@ public class DisplayServlet extends HttpServlet {
         PrintWriter writer = response.getWriter();
 
         String id = request.getParameter("id");
-        if (id == null || "".equals(id)) {
+        if (id == null || id.isBlank()||!id.matches("\\d{13}")) {
             response.setStatus(500);
             writer.print("invalid id");
             writer.flush();
@@ -97,11 +97,9 @@ public class DisplayServlet extends HttpServlet {
     }
     @Override
     protected void doOptions(HttpServletRequest req, HttpServletResponse response) {
-//        super.doOptions(req, response);
         response.addHeader("Access-Control-Allow-Origin", "*");
         response.addHeader("Access-Control-Allow-Methods", "*");
         response.addHeader("Access-Control-Allow-Headers", "*");
         response.addHeader("Access-Control-Allow-Credentials", "true");
-//        response.
     }
 }
