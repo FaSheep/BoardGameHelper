@@ -37,4 +37,5 @@
     <string name="code_0">连接失败</string>
     <string name="code_500">初始化失败</string>
     <string name="keep_connect">正在连接.....</string>
+	<string name="online_mode">在线模式</string>
 </resources>

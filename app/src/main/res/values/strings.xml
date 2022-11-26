@@ -36,4 +36,5 @@
     <string name="code_0">Connect failed</string>
     <string name="code_500">Initialization failed</string>
     <string name="keep_connect">Connecting......</string>
+    <string name="online_mode">Online Mode</string>
 </resources>
