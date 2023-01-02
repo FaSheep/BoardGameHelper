@@ -1,6 +1,8 @@
 package com.fasheep.boardgamehelper.adapter;
 
 import android.app.AlertDialog;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -75,9 +77,20 @@ public class RoleAdapter extends RecyclerView.Adapter {
             roleViewHolder.roleImage.setImageResource(Resource.getID(RoomManager.getRoom(id).getRole(position).getImagePath()));
             roleViewHolder.numMinus.setOnClickListener(view -> editNum(roleViewHolder, -1, position, false));
             roleViewHolder.numAdd.setOnClickListener(view -> editNum(roleViewHolder, 1, position, false));
-            roleViewHolder.roleNum.setOnFocusChangeListener((view, b) -> {
-                if (!b) {
-                    editNum(roleViewHolder, null, position, true);
+            roleViewHolder.roleNum.addTextChangedListener(new TextWatcher() {
+                @Override
+                public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+                }
+
+                @Override
+                public void onTextChanged(CharSequence s, int start, int before, int count) {
+                    editNum(roleViewHolder, null, roleViewHolder.getAdapterPosition(), true);
+                }
+
+                @Override
+                public void afterTextChanged(Editable s) {
+
                 }
             });
             roleViewHolder.itemView.setOnLongClickListener(view -> {
@@ -122,13 +135,15 @@ public class RoleAdapter extends RecyclerView.Adapter {
         if ("".equals(numText)) {
             numText = holder.roleNum.getHint().toString();
         }
-        if (replace) {
-            RoomManager.getRoom(id).getRole(position).setNumber(Integer.parseInt(numText));
-        } else if (i != null) {
-            int num = Integer.parseInt(numText);
-            num = Math.max(num + i, 0);
-            RoomManager.getRoom(id).getRole(position).setNumber(num);
-            holder.roleNum.setText(String.valueOf(num));
+        if (position < RoomManager.getRoom(id).getNumOfRoles()) {
+            if (replace) {
+                RoomManager.getRoom(id).getRole(position).setNumber(Integer.parseInt(numText));
+            } else if (i != null) {
+                int num = Integer.parseInt(numText);
+                num = Math.max(num + i, 0);
+                RoomManager.getRoom(id).getRole(position).setNumber(num);
+                holder.roleNum.setText(String.valueOf(num));
+            }
         }
     }
 
