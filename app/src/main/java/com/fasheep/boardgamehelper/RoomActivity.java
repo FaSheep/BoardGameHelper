@@ -29,7 +29,7 @@ public class RoomActivity extends AppCompatActivity {
         Configuration configuration = getResources().getConfiguration();
         GridLayoutManager layoutManager;
         if (configuration.orientation == Configuration.ORIENTATION_LANDSCAPE) {
-            layoutManager = new GridLayoutManager(this, 4);
+            layoutManager = new GridLayoutManager(this, 4);//Test
         } else {
             layoutManager = new GridLayoutManager(this, 2);
         }
