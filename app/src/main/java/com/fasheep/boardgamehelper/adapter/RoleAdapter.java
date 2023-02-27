@@ -23,7 +23,7 @@ public class RoleAdapter extends RecyclerView.Adapter {
     private static final int ITEM_TYPE_ROLE = 0;
     private static final int ITEM_TYPE_ADD = 1;
     private final String id;
-
+    private NumberSyncer numberSyncer;
 
     static class RoleViewHolder extends RecyclerView.ViewHolder {
         final TextView roleName;
@@ -100,6 +100,7 @@ public class RoleAdapter extends RecyclerView.Adapter {
                     RoomManager.getRoom(id).removeRole(position);
                     notifyItemRemoved(position);
                     notifyItemRangeChanged(position, getItemCount());
+                    syncNum();
                 });
                 removeRoleDialog.setNegativeButton(view.getContext().getText(R.string.cancel), (dialogInterface, i) -> {
                 });
@@ -121,6 +122,7 @@ public class RoleAdapter extends RecyclerView.Adapter {
                     }
                     RoomManager.getRoom(id).addRole(roleName.getText().toString(), 1, "defRoleImage");
                     notifyItemInserted(getItemCount());
+                    syncNum();
                 });
                 inputDialog.setNegativeButton(view.getContext().getText(R.string.cancel), (dialogInterface, i) -> {
                 });
@@ -145,6 +147,7 @@ public class RoleAdapter extends RecyclerView.Adapter {
                 holder.roleNum.setText(String.valueOf(num));
             }
         }
+        syncNum();
     }
 
     @Override
@@ -155,5 +158,13 @@ public class RoleAdapter extends RecyclerView.Adapter {
     @Override
     public int getItemCount() {
         return RoomManager.getRoom(id).getNumOfRoles() + 1;
+    }
+
+    public void setNumberChangeListener(NumberSyncer numberSyncer) {
+        this.numberSyncer = numberSyncer;
+    }
+
+    public void syncNum() {
+        numberSyncer.syncNum(RoomManager.getRoom(id).getNumOfPlayers());
     }
 }

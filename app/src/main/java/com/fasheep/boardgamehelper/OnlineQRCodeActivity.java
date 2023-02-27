@@ -31,13 +31,20 @@ public class OnlineQRCodeActivity extends AppCompatActivity {
         String id = getIntent().getStringExtra("id");
         time = String.valueOf(System.currentTimeMillis());
 
-        Locale locale = getResources().getConfiguration().locale;
+        /*Locale locale;
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.N) {
+            locale = getResources().getConfiguration().getLocales().get(0);
+        } else {
+            locale = getResources().getConfiguration().locale;
+        }
+        System.out.println(locale.getLanguage());
         String language = locale.getLanguage();
         if ("zh".equals(language)) {
             URL = Resource.URL_CN;
         } else if ("en".equals(language)) {
             URL = Resource.URL_UK;
-        }
+        }*/
+        URL = Resource.URL_HK;//转到HK服务器
         connectThread = new Thread(() -> {
             int code = 0;
             try {

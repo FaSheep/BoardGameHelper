@@ -3,7 +3,7 @@ plugins {
 }
 
 group 'com.fasheep.boardgamehelper.web'
-version '1.0-Alpha'
+version '1.2.0'
 
 dependencies {
     compileOnly 'jakarta.servlet:jakarta.servlet-api:5.0.0'

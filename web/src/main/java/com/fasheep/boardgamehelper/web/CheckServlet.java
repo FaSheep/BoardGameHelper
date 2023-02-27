@@ -32,7 +32,7 @@ public class CheckServlet extends HttpServlet {
                     PrintWriter writer = response.getWriter();
                     Set<String> keys = RoomManager.getKeySet();
                     int num;
-                    if (keys != null && (num = keys.size()) > 0) {
+                    if ((num = keys.size()) > 0) {
                         writer.println(num);
                         for (String s : keys) {
                             writer.println(s);

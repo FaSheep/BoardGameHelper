@@ -3,7 +3,7 @@ plugins {
 }
 
 group 'com.fasheep.boardgamehelper'
-version '1.0-Alpha'
+version '1.2.0'
 
 dependencies {
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.9.1'

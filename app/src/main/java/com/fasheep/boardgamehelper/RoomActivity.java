@@ -4,16 +4,15 @@ import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
-import android.widget.ImageButton;
-import android.widget.LinearLayout;
-import android.widget.Toast;
+import android.widget.*;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SwitchCompat;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import com.fasheep.boardgamehelper.adapter.RoleAdapter;
 import com.fasheep.boardgamehelper.core.RoomManager;
+
+import java.util.Objects;
 
 public class RoomActivity extends AppCompatActivity {
     private String id;
@@ -25,13 +24,18 @@ public class RoomActivity extends AppCompatActivity {
 
         id = getIntent().getStringExtra("id");
         RoleAdapter roleAdapter = new RoleAdapter(id);
+        roleAdapter.setNumberChangeListener(num -> {
+            Objects.requireNonNull(getSupportActionBar()).setTitle(String.format(getString(R.string.title), num));
+        });
+        roleAdapter.syncNum();
         RecyclerView roleList = findViewById(R.id.roleList);
         Configuration configuration = getResources().getConfiguration();
         GridLayoutManager layoutManager;
+        int widthDP = getWidthDP();
         if (configuration.orientation == Configuration.ORIENTATION_LANDSCAPE) {
-            layoutManager = new GridLayoutManager(this, 4);//Test
+            layoutManager = new GridLayoutManager(this, widthDP / 170);
         } else {
-            layoutManager = new GridLayoutManager(this, 2);
+            layoutManager = new GridLayoutManager(this, widthDP / 170);
         }
         roleList.setLayoutManager(layoutManager);
         roleList.setAdapter(roleAdapter);
@@ -42,11 +46,11 @@ public class RoomActivity extends AppCompatActivity {
         Button submit = findViewById(R.id.submit);
         submit.setOnClickListener(view -> {
             if (RoomManager.getRoom(id).getNumOfPlayers() > 0) {
-                if (online.isChecked()){
+                if (online.isChecked()) {
                     Intent intent = new Intent(RoomActivity.this, OnlineQRCodeActivity.class);
                     intent.putExtra("id", id);
                     startActivity(intent);
-                }else {
+                } else {
                     Intent intent = new Intent(RoomActivity.this, QRCodeActivity.class);
                     intent.putExtra("id", id);
                     startActivity(intent);
@@ -61,4 +65,11 @@ public class RoomActivity extends AppCompatActivity {
             tipsView.setVisibility(View.GONE);
         });
     }
+
+    private int getWidthDP() {
+        int width = getResources().getDisplayMetrics().widthPixels;
+        float density = getResources().getDisplayMetrics().density;
+        return (int) (width / density);
+    }
+
 }

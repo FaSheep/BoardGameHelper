@@ -5,8 +5,7 @@ import java.util.Map;
 
 public class Resource {
     private static final Map<String, Integer> map = new HashMap<>();
-    public static final String URL_UK = "http://fasheep.uksouth.cloudapp.azure.com";
-    public static final String URL_CN = "http://120.78.126.136";
+    public static final String URL_HK = "http://bghhk.fasheep.xyz";
 
     static {
         map.put("wolf", R.drawable.wolf);

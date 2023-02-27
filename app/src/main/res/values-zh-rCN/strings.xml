@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">桌游助手</string>
-    <string name="submit_button">生成二维码</string>
+	<string name="title">桌游助手 人数：%d</string>
+	<string name="submit_button">生成二维码</string>
     <string name="next">下一个</string>
     <string name="previous">上一个</string>
     <string name="werewolf">狼人</string>
