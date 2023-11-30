@@ -47,8 +47,7 @@ public class MainActivity extends AppCompatActivity {
                 reader.close();
 
                 RoomManager.addRoom(String.valueOf(i++), Room.getInstanceFromJson(stringBuilder.toString()));
-            }//
-//            manager.close();
+            }
         } catch (IOException e) {
             throw new RuntimeException(e);
         }catch (JsonSyntaxException e){
