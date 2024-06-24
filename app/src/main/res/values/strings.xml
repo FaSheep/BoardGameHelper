@@ -26,7 +26,7 @@
     <string name="toast_text">Nobody in this game</string>
     <string name="err_text1">ERROR</string>
     <string name="default_format_text">Player %d, you are the %s.</string>
-    <string name="tips_text2">Player %d\nYou can long press the QRcode to check the result.</string>
+    <string name="tips_text2">Player %d\nYou can click the QRcode to check the result.</string>
     <string name="dialog_result_text">Player %d</string>
     <string name="confirm">Confirm</string>
     <string name="cancel">Cancel</string>

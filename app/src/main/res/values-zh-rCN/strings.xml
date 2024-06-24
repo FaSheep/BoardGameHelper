@@ -27,7 +27,7 @@
     <string name="toast_text">没有人你也玩？</string>
     <string name="err_text1">发生错误</string>
     <string name="default_format_text">玩家%d，你是%s。</string>
-    <string name="tips_text2">玩家%d\n长按二维码查看角色</string>
+    <string name="tips_text2">玩家%d 点击二维码查看角色</string>
     <string name="dialog_result_text">玩家%d</string>
     <string name="confirm">确认</string>
     <string name="cancel">取消</string>

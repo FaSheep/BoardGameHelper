@@ -1,11 +1,9 @@
 package com.fasheep.boardgamehelper.core;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 public class RoomManager {
-    private static final Map<String, Room> map = new HashMap<>();
+    private static final Map<String, Room> map = new LinkedHashMap<>();
 
     public static synchronized int getNumOfRooms() {
         return map.size();
@@ -29,5 +27,9 @@ public class RoomManager {
 
     public static synchronized void clean() {
         map.clear();
+    }
+
+    public static List<Room> getRoomList() {
+        return new ArrayList<>(map.values());
     }
 }

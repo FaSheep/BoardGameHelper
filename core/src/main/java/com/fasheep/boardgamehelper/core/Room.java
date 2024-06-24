@@ -40,6 +40,10 @@ public class Room implements Serializable {
 //        return room;
 //    }
 
+    public List<Role> getRoleList() {
+        return Collections.unmodifiableList(roleList);
+    }
+
     public static Room getInstanceFromJson(String json) throws JsonSyntaxException {
         Gson gson = new Gson();
         return gson.fromJson(json, Room.class);
@@ -65,6 +69,10 @@ public class Room implements Serializable {
             num += role.getNumber();
         }
         return num;
+    }
+
+    public String getFormatText() {
+        return formatText;
     }
 
     public int getNumOfRoles() {
